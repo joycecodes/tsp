@@ -1,5 +1,5 @@
 # Traveling Salesman Problem Visualizer 
-![](pImage 12-29-19 at 12.40 PM.jpg)
+![](Image 12-29-19 at 12.40 PM.jpg)
 
 This project is a TSP visualizer that uses Integer Linear Programming (branch and bound method) to find the shortest tour that visits each city only once. Typically, the path will not be found in the first iteration, so we need to solve the subtour relaxation by finding relevant constraints. Since the number of possible combinations is exponential, we do a DFS to find the subtours and use that information to form new constraints. We repeat this process until a tour is a found.
 
