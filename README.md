@@ -13,7 +13,7 @@ It can be written as:
 ```
 ![](primal_equation.PNG)
 
-However, this will not find you the tour when the LP solver is used. Because we are trying to minimize distances, it will calculate subtours, or separate groupings of cities, in the first iteration. We want to force the subtours to connect to each other, and to do that, we add new constraints. For every city in a subtour that is added to another city outside of that subtour, the new inequality must be greater than or equal to 2.
+However, this will not find you the tour when the LP solver is used. Because we are trying to minimize distances, it will calculate subtours, or distinct groupings of cities, in the first iteration. We want to force the subtours to connect to each other, and to do that, we add new constraints. For every city in a subtour that is added to another city outside of that subtour, the new inequality must be greater than or equal to 2.
 ```
 It can be written as:
 ```
