@@ -40,4 +40,6 @@ http://www.math.uwaterloo.ca/tsp/methods/opt/zone.htm
 
 https://www.epfl.ch/labs/dcg/wp-content/uploads/2018/10/13-TSP.pdf
 
+The Traveling Salesman Problem: A Computational Study
+
 
