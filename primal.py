@@ -81,5 +81,4 @@ class prim:
                                         temp += pulp.lpSum(self.X_[count][str(i) + "_" + str(j)])
                                     else:
                                         temp += pulp.lpSum(self.X_[count][str(j) + "_" + str(i)])
-                # print("lol, ", temp)
                 self.primal_[count] += temp >= 2
