@@ -40,18 +40,6 @@ if __name__ == "__main__":
 
     font = ImageFont.truetype("/tsplib/Arial.ttf", 12)
 
-    """
-        # filepath = "C:/Users/domed/Desktop/network-art/tsplib/test.txt"
-    #[(72,131),(125,100),(125,162),(325,100),(325,162),(378,131)]
-    with open(filepath) as fp:
-        for cnt, line in enumerate(fp):
-            s = line.split()
-            idx, x, y = s
-            coord.append((int(x),int(y)))
-            # print("Line {}: {}".format(cnt, line))
-            N+=1
-    """
-
     # Gives you the distances from vtx i to vtx j
     dist_xy = {}
     for i in range(N):
@@ -66,10 +54,10 @@ if __name__ == "__main__":
     finished = False
     count = 0
 
-    p = primal.prim([], N, [], [])    #rakes X_, N, S_s, primal
-    d = dual.dual([], [], [], N)         # Ys, dual, radii_
+    p = primal.prim([], N, [], [])    # X_, N, S_s, primal
+    d = dual.dual([], [], [], N)      # Ys, dual, radii_
 
-    #   This creates the route, using int LP, denoted by the black lines
+    #   This creates the route, using ILP, denoted by the black lines
     while not finished:
         print("_______________________________________________")
         print(count)
@@ -80,13 +68,11 @@ if __name__ == "__main__":
         p.create_X(count)
         p.primal_[count] += pulp.lpSum(
             p.X_[count][str(i) + "_" + str(j)] * dist_xy[(i, j)] for i in range(N) for j in range(i + 1, N)), "Z"
-        # print("OBJECTIVE: ", primal_[count].objective)
 
         # Constraints
         p.add_constraints(count, p.S_s)
 
         # Solves the LP
-        #print(primal_[count])
         p.primal_[count].solve()
 
         # Sets the variables in dict X_count, either 1 or 0; tells you whether or not you take the path (i,j)
@@ -123,7 +109,8 @@ if __name__ == "__main__":
             # ADDS CONSTRAINTS
             d.add_constraints_Y(p.S_s, count, G)
             d.dual_[count].solve()
-
+        
+        # Draws the final image
         if len(S_x) == 1:
             print(pulp.value(d.dual_[count-1].objective))
             print(pulp.value(p.primal_[-1].objective))
@@ -138,11 +125,8 @@ if __name__ == "__main__":
                     Y[tour].append((idx, variable.varValue)) #ex: Y[tour][(Ys: Ys_val)]
                 else:
                     R[variable.name] = variable.varValue
-            print(Y)
-            print(R)
-
+ 
             result = []
-
             for i in range(count):
                 result.append({})
                 for j in range(len(p.S_s[i])):
@@ -152,9 +136,9 @@ if __name__ == "__main__":
                             result[i]["r_"+ str(city)] = moat + R["r_" + str(city)]
                         else:
                             result[i]["r_" + str(city)] = result[i-1]["r_" + str(city)] + moat
-            #print(result)
             result = result[::-1]
-
+            
+            # This draws the legend identifying which iteration a moat occured and the moats themselves
             key = 0
             for m in range(count):
                 ans = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
@@ -167,20 +151,21 @@ if __name__ == "__main__":
                     draw.ellipse([x - moat, y - moat, x + moat, y + moat], fill=ans)
 
             ans = (random.randint(0, 200), random.randint(0, 255), random.randint(50, 255))
-
+            
+            # Draws the radius of the control zone
             for i in range(N):
                 x, y = G[i]
                 c = R["r_" + str(i)]
                 draw.ellipse([x - c, y - c, x + c, y + c], fill=ans)
-
+                
+            # Draws a small circle of where each city is
             for i in range(N):
                 x, y = G[i]
                 c = 2
                 draw.ellipse([x - c, y - c, x + c, y + c], fill=(0, 0, 0))
-
-            ##########
-
+        
             finished = True
+            # Draws the connecting tour
             ans = {}
             for variable in p.primal_[-1].variables():
                 ans[str(variable.name)] = int(variable.varValue)
