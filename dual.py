@@ -38,11 +38,5 @@ class dual:
                                         break
                                     elif i in S_i or j in S_i:
                                         temp += self.Ys_[count]["Ys_tour" + str(idx1) + "_" + str(idx2)]
-
-                            if (i,j) == (9, 10):
-                                print("start: ", idx_start, idx_i, idx_end, (i, j))
-                                print("end: ", temp)
-                                print("rest: ", (self.radii_[count]["r_" + str(i)] + self.radii_[count]["r_" + str(j)] + temp <= self.dist(G[i], G[j])))
-
                             self.dual_[count] += (self.radii_[count]["r_" + str(i)] + self.radii_[count]["r_" + str(j)]
                                                  + temp <= self.dist(G[i], G[j]))
