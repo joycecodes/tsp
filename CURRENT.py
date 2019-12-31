@@ -2,12 +2,11 @@ from PIL import Image, ImageDraw, ImageFont
 import pulp
 import math
 import numpy as np
-# from graph import Graph
 import collections
 import random
 import primal
 import dual
-
+# from graph import Graph
 
 if __name__ == "__main__":
     def dist(p1, p2):  # takes tuple
