@@ -26,7 +26,7 @@ The objective function of the dual is set up so that each width (2*radius) of a 
 ```
 It can be written as:
 ```
-![](dual_equation.png)
+![](dual_obj.png)
 
 For suceeding iterations, we use the subtours to add additional constraints to the dual. We add an additional variable Ys to the constraint inequalities so that the radius of city i to city j plus the "moat" Ys_i and Ys_j is <= D(i,j). This is repeated until the tour for the primal is found. Keep in mind that we must keep the constraints from previous tours in the new constraints.
 ```
