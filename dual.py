@@ -1,7 +1,7 @@
 import pulp
 import math
-class dual:
 
+class dual:
     def __init__(self, Ys_, dual_, radii_, N):
         self.Ys_ = Ys_
         self.dual_ = dual_
