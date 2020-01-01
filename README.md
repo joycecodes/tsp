@@ -14,7 +14,7 @@ Let's say we have number of cities n and for two cities, i and j, we let x(i,j) 
 ```
 It can be written as:
 ```
-![](primal_equation.PNG)
+![](primal_equation.png)
 
 However, this will not find you the tour when the LP solver is used. Because we are trying to minimize distances, it will calculate subtours, or separate groupings of cities, in the first iteration. We want to force the subtours to connect to each other, and to do that, we add new constraints. For every city in a subtour that is added to another city outside of that subtour, the new inequality must be greater than or equal to 2.
 ```
