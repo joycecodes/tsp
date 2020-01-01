@@ -45,4 +45,8 @@ https://www.epfl.ch/labs/dcg/wp-content/uploads/2018/10/13-TSP.pdf
 
 The Traveling Salesman Problem: A Computational Study (W. Cook)
 
+Linear and Nonlinear Programming 3rd Edition (D. Luenberger, Y. Ye)
+
+Elementary Linear Algebra (Spence, Insel, Friedberg)
+
 
