@@ -1,12 +1,11 @@
 import pulp
 
-class prim:
+class primal:
     def __init__(self, X_, N, S_s, primal_):
         self.X_ = X_
         self.N = N
         self.S_s = S_s
         self.primal_ = primal_
-
 
     def create_X(self, count):
         self.X_.append({})
@@ -49,7 +48,6 @@ class prim:
 
     def add_to_S_s(self, S_x):
         self.S_s.append(S_x)
-        return self.S_s
 
     ################################################################################
     #         for S_i in S_x                                                       #
