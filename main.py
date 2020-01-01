@@ -6,7 +6,6 @@ import collections
 import random
 import primal
 import dual
-# from graph import Graph
 
 if __name__ == "__main__":
     def dist(p1, p2):  # takes tuple
@@ -16,7 +15,7 @@ if __name__ == "__main__":
 
     w, h = 1024, 512
     data = np.zeros((h, w, 3), dtype=np.uint8)
-    for i in range(0, 500):
+    for i in range(0, 512):
         for j in range(0, 1024):
             data[i, j] = [100, 100, 100]
 
