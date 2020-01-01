@@ -6,7 +6,7 @@ While the program is running, it is also solving for the dual of the problem (pr
 
 In short, the relationship of the dual to the primal can be summed up as a different view of the objective function. For example, if we wanted to maximize the space of a storage unit as our objective function, the dual would be to minimize the amount of space in the storage unit. Mathematically, each variable in the primal LP becomes the constraint in the dual. Each constraint in the primal becomes a variable in the dual. It works beautifully that the variables in our dual happen to be the size of each city!
 
-![](image/example.jpg)
+![](images/example.jpg)
 
 
 ## The Primal (finding the tour)
@@ -14,13 +14,13 @@ Let's say we have number of cities n and for two cities, i and j, we let x(i,j) 
 ```
 It can be written as:
 ```
-![](image/primal_equation.png)
+![](images/primal_equation.png)
 
 However, this will not find you the tour when the LP solver is used. Because we are trying to minimize distances, it will calculate subtours, or separate groupings of cities, in the first iteration. We want to force the subtours to connect to each other, and to do that, we add new constraints. For every city in a subtour that is added to another city outside of that subtour, the new inequality must be greater than or equal to 2.
 ```
 It can be written as:
 ```
-![](image/primal_constraints.png)
+![](images/primal_constraints.png)
 
 We then keep iterating until we have no subtours left. Keep in mind that past constraints must be kept in new iterations.
 
@@ -29,13 +29,13 @@ The objective function of the dual is set up so that each width (2*radius) of a 
 ```
 It can be written as:
 ```
-![](image/dual_obj.png)
+![](images/dual_obj.png)
 
 For suceeding iterations, we use the subtours to add additional constraints to the dual. We add an additional variable Ys to the constraint inequalities so that the radius of city i to city j plus the "moat" Ys_i and Ys_j is <= D(i,j). This is repeated until the tour for the primal is found. Keep in mind that we must keep the constraints from previous tours in the new constraints.
 ```
 It can be written as:
 ```
-![](image/dual_constraints.png)
+![](images/dual_constraints.png)
 
 
 ## Resources
