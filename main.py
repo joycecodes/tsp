@@ -22,7 +22,7 @@ if __name__ == "__main__":
     img = Image.fromarray(data, 'RGB')
     draw = ImageDraw.Draw(img)
 
-    # Generates coordinates
+    # Generates random number of city and its coordinates
     random.seed()
     N = random.randint(40, 50)
     coord = []
@@ -31,7 +31,7 @@ if __name__ == "__main__":
         x, y = random.randint(200, 900), random.randint(200, 400)
         coord.append((x, y))
 
-    # This is basic graph
+    # This contains cities and its coordinates
     G = {}
     for i in range(N):
         G[i] = coord[i]
