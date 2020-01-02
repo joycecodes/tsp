@@ -22,18 +22,16 @@ if __name__ == "__main__":
     img = Image.fromarray(data, 'RGB')
     draw = ImageDraw.Draw(img)
 
-    # Generates random number of city and its coordinates
+    # Generates a random number of cities
     random.seed()
     N = random.randint(40, 50)
     coord = []
 
-    for i in range(N):
-        x, y = random.randint(200, 900), random.randint(200, 400)
-        coord.append((x, y))
-
     # This contains cities and its coordinates
     G = {}
     for i in range(N):
+        x, y = random.randint(200, 900), random.randint(200, 400)
+        coord.append((x, y))
         G[i] = coord[i]
 
     font = ImageFont.truetype("fonts/Arial.ttf", 11)
