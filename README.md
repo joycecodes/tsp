@@ -49,4 +49,8 @@ Linear and Nonlinear Programming 3rd Edition (D. Luenberger, Y. Ye)
 
 Elementary Linear Algebra (Spence, Insel, Friedberg)
 
+```
+Special thanks to Omede Firouz for guidance!
+```
+
 
