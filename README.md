@@ -8,6 +8,21 @@ In short, the relationship of the dual to the primal can be summed up as a diffe
 
 ![](images/example.jpg)
 
+## Usage
+
+After cloning this repository, download requirements with
+
+```
+pip3 install -r requirements.txt
+```
+
+The solver can then be run simply as
+
+```
+python3 main_tsp.py
+```
+
+This will randomly generate cities and solve the TSP for them.  It'll then create a visualization of the solution, together with the moats considered at each optimization step.
 
 ## The Primal (finding the tour)
 Let's say we have number of cities n and for two cities, i and j, we let x(i,j) be whether or not we choose to use the city. If the city is used: x(i,j) = 1. If it is not: x(i,j) = 0. To calculate the length of the tour, we calculate the distance of each city and all possible paths from that city and whether or not the city is used. We observe that for every city and its corresponding possible paths, it will sum up to 2 because we have to enter and exit each city exactly once.
