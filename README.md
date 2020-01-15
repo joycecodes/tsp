@@ -28,7 +28,7 @@ To run unit tests, run
 
 ```
 cd test_
-python3 python3 -m pytest
+python3 -m pytest
 ```
 
 ## The Primal (finding the tour)
