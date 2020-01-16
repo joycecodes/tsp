@@ -5,8 +5,10 @@ import pytest
 
 def test_city_has_two_paths():
     """Each city should have only two paths: one to enter and the other to exit."""
+    p, d, _, _, pulp = main_tsp.solve()
+
     cities = {}
-    compare = main_tsp.p.X_[-1]
+    compare = p.X_[-1]
     ans = True
     for city in compare:
         start, end = city.split("_")
@@ -21,16 +23,19 @@ def test_city_has_two_paths():
 def test_dual_less_than_primal():
     """We know that the dual LP is accurate if the size of all cities is less than or equal to
        the length of the tour."""
-    dual = main_tsp.pulp.value(main_tsp.d.dual_[-1].objective)
-    primal = main_tsp.pulp.value(main_tsp.p.primal_[-1].objective)
+    p, d, _, _, pulp = main_tsp.solve()
+    dual = pulp.value(d.dual_[-1].objective)
+    primal = pulp.value(p.primal_[-1].objective)
     assert dual <= primal
 
 def test_num_of_cities_matches_random_generator():
     """This test makes sure that the number of cities in the list matches the number generated."""
-    assert main_tsp.N == len(main_tsp.cities)
+    _, _, N, cities, _ = main_tsp.solve()
+    assert N == len(cities)
 
 @pytest.mark.parametrize("input1, input2, output1",[((0, 0), (0, 0), 0), ((50, 100), (50, 50), 50), ((10, 50), (0, 50), 10)])
 def test_calc_distance(input1, input2, output1):
     """This checks that the method to calculate distance given two points is correct."""
-    assert main_tsp.d.calc_distance(input1, input2) == output1
+    _, d, _, _, _ = main_tsp.solve()
+    assert d.calc_distance(input1, input2) == output1
 
