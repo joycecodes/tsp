@@ -1,4 +1,4 @@
 Pillow==6.2.0
 PuLP==2.0
-numpy==1.17.2
+numpy==1.22.0
 pytest==5.2.1
